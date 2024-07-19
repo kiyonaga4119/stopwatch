@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with Stopwatch</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="initial-screen" class="active">
+        <input id="nickname" placeholder="name (max 5 characters)">
+        <button id="createRoom">Create Room</button>
+        <input id="roomId" placeholder="Enter Room ID to Join">
+        <button id="joinRoom">Join Room</button>
+    </div>
+    <div id="chat-screen">
+        <div id="navbar">
+            <a href="#" id="room-url">IDを表示</a>
+
+            <div id="nickname-display" class="nickname-display"></div>
+
+            <div id="view-options">
+                <label>
+                    <input type="checkbox" id="view-only"> 閲覧
+                </label>
+            </div>
+
+            <button id="exitRoom">退室</button> <!-- 追加 -->
+        </div>
+        <ul id="messages"></ul>
+        <form id="form" action="">
+            <input id="input" autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+        <div id="stopwatch">
+            <span id="elapsedTime">00:00.00</span>
+            <span id="splitTime">00:00.00</span>
+        </div>
+        <ul id="laps"></ul>
+        <div id="controls">
+            <button id="lapReset">Lap/Reset</button>
+            <button id="startStop">Start</button>
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <p id="popup-url"></p>
+            <a href="#" id="join-room-link">Join Room</a>
+            <div id="popup-qr-code"></div>
+            <a href="#" id="line-share-link" target="_blank">LINEで共有</a>
+            <a href="#" id="copy-link">リンクをコピー</a>
+        </div>
+    </div>
+    <div id="nickname-popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h3>Change Nickname</h3>
+            <input type="text" id="new-nickname" placeholder="Enter new nickname (max 5 characters)">
+            <button id="save-nickname">Save</button>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

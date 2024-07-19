@@ -1,0 +1,308 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+#initial-screen, #chat-screen {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh; /* fix height */
+    overflow-y: auto; /* enable scrolling */
+}
+
+#initial-screen.active, #chat-screen.active {
+    display: block;
+}
+
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 15px 10px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#navbar a:hover {
+    color: #ffeb3b;
+}
+
+#view-options {
+    display: flex;
+    align-items: center;
+}
+
+/* #view-options label {
+    margin: 0;
+    color: #fff;
+    font-size: 0.9em;
+} */
+
+.nickname-display {
+    margin-left: auto; /* 追加: ニックネーム表示を右側に配置 */
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+#view-options label {
+    margin-right: 1em;
+    margin-left: 2em;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+
+
+
+#messages, #laps {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    /* max-height: 90px; fixed height for 3 lines */
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+
+
+#laps{
+height:200px;
+}
+#messages{
+    height: 64px;
+}
+
+#messages li, #laps li {
+    padding: 2px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#messages li:nth-child(odd), #laps li:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+#messages li:nth-child(even), #laps li:nth-child(even) {
+    background-color: #fff;
+}
+
+.nickname {
+    width: 30%;
+    text-align: right; /* right align nickname */
+    font-size: 0.8em; /* smaller font size for nickname */
+    padding-right: 1ch; /* add one character space to the right */
+    color: #007BFF;
+}
+
+.lap-time, .split-time {
+    width: 35%;
+    text-align: right; /* right align lap-time and split-time */
+    font-size: 1.5em; /* adjust font size for time */
+}
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#stopwatch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2em;
+    color: #007BFF;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    /* width: 95%; set input width to 95% */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    background-color: #fff;
+    color: #333;
+}
+
+button[type="submit"] {
+    /* width: 5%; set button width to 5% */
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 1em; /* adjust font size as needed */
+    border: 1px solid #ddd;
+    border-radius: 0 4px 4px 0;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+button {
+    width: 49%;
+    padding: 20px; /* increase button height */
+    box-sizing: border-box;
+    font-size: 1.5em; /* increase button font size */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.popup-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.popup-content .close:hover,
+.popup-content .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#popup-url {
+    font-size: 1em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#popup-qr-code img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+    #initial-screen, #chat-screen {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    input[type="text"] {
+        /* width: 85%; adjust input width for mobile */
+        padding: 8px;
+    }
+
+    button[type="submit"] {
+        width: 15%; /* adjust button width for mobile */
+        padding: 8px;
+    }
+
+    button {
+        padding: 15px; /* adjust button padding for mobile */
+        font-size: 1.2em; /* adjust button font size for mobile */
+    }
+
+    #stopwatch {
+        font-size: 1.5em; /* adjust stopwatch font size for mobile */
+    }
+}
+
+#chatBt{
+    width: 4em;
+    font-weight: bold;
+}
+
+.chatForm{
+    width:80%;
+}
+
+#elapsedTime{
+    margin-right: 1em;
+}
+
+#exitRoom{
+    width: 50px;
+    font-size: 1em;
+    padding: 2px;
+    font-weight: bold;
+
+}
+
+
+/* 追加 */
+button.stop {
+    background-color: red;
+    color: white;
+}
+
+
+/* リセットボタンがリセット状態のときのスタイル */
+button.reset {
+    background-color: orange;
+    color: white;
+}
+
+
+
