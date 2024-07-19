@@ -305,4 +305,9 @@ button.reset {
 }
 
 
-
+#input{
+    width: 78%;
+}
+#inputBt{
+    width: 20%;
+}
